@@ -24,6 +24,7 @@ public static class WithingsClientExtensions
             client.AsGetHeartMeasurementsTool(),
             client.AsGetWorkoutsTool(),
             client.AsGetDevicesTool(),
+            client.AsGetUserInfoTool(),
         ];
     }
 
@@ -260,5 +261,41 @@ public static class WithingsClientExtensions
             },
             name: "Withings_GetDevices",
             description: "Get a list of Withings devices associated with the authenticated user including device type, model, battery level, and last session date.");
+    }
+
+    /// <summary>
+    /// Creates an AIFunction tool that retrieves the authenticated user's profile information.
+    /// </summary>
+    public static AIFunction AsGetUserInfoTool(this global::Withings.WithingsClient client)
+    {
+        return AIFunctionFactory.Create(
+            async (CancellationToken cancellationToken) =>
+            {
+                var response = await client.User.UserGetinfoAsync(
+                    action: global::Withings.UserGetinfoRequestAction.Getinfo,
+                    cancellationToken: cancellationToken).ConfigureAwait(false);
+
+                return new
+                {
+                    response.Status,
+                    response.Body?.User?.Userid,
+                    response.Body?.User?.Firstname,
+                    response.Body?.User?.Lastname,
+                    response.Body?.User?.Shortname,
+                    response.Body?.User?.Email,
+                    response.Body?.User?.Gender,
+                    response.Body?.User?.Birthdate,
+                    response.Body?.User?.Timezone,
+                    UnitPreferences = response.Body?.User?.UnitPref is { } up ? new
+                    {
+                        up.Weight,
+                        up.Height,
+                        up.Distance,
+                        up.Temperature,
+                    } : null,
+                };
+            },
+            name: "Withings_GetUserInfo",
+            description: "Get the authenticated user's profile information from Withings including name, email, gender, birthdate, timezone, and unit preferences (metric/imperial).");
     }
 }
