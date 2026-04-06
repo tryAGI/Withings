@@ -1,0 +1,242 @@
+
+#nullable enable
+
+namespace Withings
+{
+    public partial class MeasureClient
+    {
+        partial void PrepareMeasureGetmeasArguments(
+            global::System.Net.Http.HttpClient httpClient,
+            global::Withings.MeasureGetmeasRequest request);
+        partial void PrepareMeasureGetmeasRequest(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpRequestMessage httpRequestMessage,
+            global::Withings.MeasureGetmeasRequest request);
+        partial void ProcessMeasureGetmeasResponse(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+        partial void ProcessMeasureGetmeasResponseContent(
+            global::System.Net.Http.HttpClient httpClient,
+            global::System.Net.Http.HttpResponseMessage httpResponseMessage,
+            ref string content);
+
+        /// <summary>
+        /// Get body measurements<br/>
+        /// Retrieves body measurements including weight, body composition, blood pressure,<br/>
+        /// heart rate, temperature, SpO2, and more.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Withings.ApiException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Withings.MeasureGetMeasResponse> MeasureGetmeasAsync(
+
+            global::Withings.MeasureGetmeasRequest request,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            request = request ?? throw new global::System.ArgumentNullException(nameof(request));
+
+            PrepareArguments(
+                client: HttpClient);
+            PrepareMeasureGetmeasArguments(
+                httpClient: HttpClient,
+                request: request);
+
+            var __pathBuilder = new global::Withings.PathBuilder(
+                path: "/measure",
+                baseUri: HttpClient.BaseAddress); 
+            var __path = __pathBuilder.ToString();
+            using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
+                method: global::System.Net.Http.HttpMethod.Post,
+                requestUri: new global::System.Uri(__path, global::System.UriKind.RelativeOrAbsolute));
+#if NET6_0_OR_GREATER
+            __httpRequest.Version = global::System.Net.HttpVersion.Version11;
+            __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
+#endif
+
+            foreach (var __authorization in Authorizations)
+            {
+                if (__authorization.Type == "Http" ||
+                    __authorization.Type == "OAuth2")
+                {
+                    __httpRequest.Headers.Authorization = new global::System.Net.Http.Headers.AuthenticationHeaderValue(
+                        scheme: __authorization.Name,
+                        parameter: __authorization.Value);
+                }
+                else if (__authorization.Type == "ApiKey" &&
+                         __authorization.Location == "Header")
+                {
+                    __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
+                }
+            }
+            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
+            var __httpRequestContent = new global::System.Net.Http.StringContent(
+                content: __httpRequestContentBody,
+                encoding: global::System.Text.Encoding.UTF8,
+                mediaType: "application/x-www-form-urlencoded");
+            __httpRequest.Content = __httpRequestContent;
+
+            PrepareRequest(
+                client: HttpClient,
+                request: __httpRequest);
+            PrepareMeasureGetmeasRequest(
+                httpClient: HttpClient,
+                httpRequestMessage: __httpRequest,
+                request: request);
+
+            using var __response = await HttpClient.SendAsync(
+                request: __httpRequest,
+                completionOption: global::System.Net.Http.HttpCompletionOption.ResponseContentRead,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+
+            ProcessResponse(
+                client: HttpClient,
+                response: __response);
+            ProcessMeasureGetmeasResponse(
+                httpClient: HttpClient,
+                httpResponseMessage: __response);
+
+            if (ReadResponseAsString)
+            {
+                var __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                    cancellationToken
+#endif
+                ).ConfigureAwait(false);
+
+                ProcessResponseContent(
+                    client: HttpClient,
+                    response: __response,
+                    content: ref __content);
+                ProcessMeasureGetmeasResponseContent(
+                    httpClient: HttpClient,
+                    httpResponseMessage: __response,
+                    content: ref __content);
+
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+
+                    return
+                        global::Withings.MeasureGetMeasResponse.FromJson(__content, JsonSerializerContext) ??
+                        throw new global::System.InvalidOperationException($"Response deserialization failed for \"{__content}\" ");
+                }
+                catch (global::System.Exception __ex)
+                {
+                    throw new global::Withings.ApiException(
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseBody = __content,
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+            }
+            else
+            {
+                try
+                {
+                    __response.EnsureSuccessStatusCode();
+                    using var __content = await __response.Content.ReadAsStreamAsync(
+#if NET5_0_OR_GREATER
+                        cancellationToken
+#endif
+                    ).ConfigureAwait(false);
+
+                    return
+                        await global::Withings.MeasureGetMeasResponse.FromJsonStreamAsync(__content, JsonSerializerContext).ConfigureAwait(false) ??
+                        throw new global::System.InvalidOperationException("Response deserialization failed.");
+                }
+                catch (global::System.Exception __ex)
+                {
+                    string? __content = null;
+                    try
+                    {
+                        __content = await __response.Content.ReadAsStringAsync(
+#if NET5_0_OR_GREATER
+                            cancellationToken
+#endif
+                        ).ConfigureAwait(false);
+                    }
+                    catch (global::System.Exception)
+                    {
+                    }
+
+                    throw new global::Withings.ApiException(
+                        message: __content ?? __response.ReasonPhrase ?? string.Empty,
+                        innerException: __ex,
+                        statusCode: __response.StatusCode)
+                    {
+                        ResponseBody = __content,
+                        ResponseHeaders = global::System.Linq.Enumerable.ToDictionary(
+                            __response.Headers,
+                            h => h.Key,
+                            h => h.Value),
+                    };
+                }
+            }
+        }
+        /// <summary>
+        /// Get body measurements<br/>
+        /// Retrieves body measurements including weight, body composition, blood pressure,<br/>
+        /// heart rate, temperature, SpO2, and more.
+        /// </summary>
+        /// <param name="action">
+        /// Must be "getmeas"
+        /// </param>
+        /// <param name="meastype">
+        /// Filter by measurement type (1=Weight, 4=Height, 9=DiastolicBP, 10=SystolicBP, 11=HeartPulse, 54=SpO2, etc.)
+        /// </param>
+        /// <param name="meastypes">
+        /// Comma-separated list of measurement type IDs
+        /// </param>
+        /// <param name="category">
+        /// 1=real measures, 2=user objectives
+        /// </param>
+        /// <param name="startdate">
+        /// Start date as Unix timestamp
+        /// </param>
+        /// <param name="enddate">
+        /// End date as Unix timestamp
+        /// </param>
+        /// <param name="lastupdate">
+        /// Unix timestamp to get data updated after this time
+        /// </param>
+        /// <param name="offset">
+        /// Pagination offset (from previous response)
+        /// </param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::System.InvalidOperationException"></exception>
+        public async global::System.Threading.Tasks.Task<global::Withings.MeasureGetMeasResponse> MeasureGetmeasAsync(
+            global::Withings.MeasureGetmeasRequestAction action = default,
+            int? meastype = default,
+            string? meastypes = default,
+            int? category = default,
+            global::System.DateTimeOffset? startdate = default,
+            global::System.DateTimeOffset? enddate = default,
+            global::System.DateTimeOffset? lastupdate = default,
+            int? offset = default,
+            global::System.Threading.CancellationToken cancellationToken = default)
+        {
+            var __request = new global::Withings.MeasureGetmeasRequest
+            {
+                Action = action,
+                Meastype = meastype,
+                Meastypes = meastypes,
+                Category = category,
+                Startdate = startdate,
+                Enddate = enddate,
+                Lastupdate = lastupdate,
+                Offset = offset,
+            };
+
+            return await MeasureGetmeasAsync(
+                request: __request,
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+        }
+    }
+}

@@ -1,0 +1,1055 @@
+openapi: 3.0.3
+info:
+  title: Withings Health API
+  description: |
+    Withings Health API provides access to health data from Withings devices including
+    scales, blood pressure monitors, sleep trackers, and activity trackers.
+    All endpoints use POST with action parameters in form-urlencoded body.
+  version: "2.0"
+  contact:
+    name: Withings Developer
+    url: https://developer.withings.com/
+
+servers:
+  - url: https://wbsapi.withings.net
+
+security:
+  - bearer: []
+
+components:
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+
+  schemas:
+    Status:
+      type: integer
+      description: "API status code. 0 = success."
+
+    MeasureGetMeasResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            updatetime:
+              type: integer
+              description: Unix timestamp of last update
+            timezone:
+              type: string
+            more:
+              type: integer
+              description: "1 if more data available, 0 otherwise"
+            offset:
+              type: integer
+              description: Offset for next page
+            measuregrps:
+              type: array
+              items:
+                type: object
+                properties:
+                  grpid:
+                    type: integer
+                  attrib:
+                    type: integer
+                    description: "0=device, 1=device ambiguous, 2=manual, 4=manual creation, 5=auto, 7=confirmed, 8=device v2"
+                  date:
+                    type: integer
+                    description: Unix timestamp
+                  created:
+                    type: integer
+                  modified:
+                    type: integer
+                  category:
+                    type: integer
+                    description: "1=real measures, 2=user objectives"
+                  deviceid:
+                    type: string
+                  hash_deviceid:
+                    type: string
+                  measures:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        value:
+                          type: integer
+                          description: Value (multiply by 10^unit to get real value)
+                        type:
+                          type: integer
+                          description: "1=Weight, 4=Height, 5=FatFreeMass, 6=FatRatio, 8=FatMassWeight, 9=DiastolicBP, 10=SystolicBP, 11=HeartPulse, 12=Temperature, 54=SpO2, 71=BodyTemp, 73=SkinTemp, 76=MuscleMass, 77=Hydration, 88=BoneMass, 91=PulseWaveVelocity, 123=VO2Max, 135=QRSInterval, 136=PRInterval, 137=QTInterval, 138=CorrectedQTInterval, 139=AtrialFibrillation"
+                        unit:
+                          type: integer
+                          description: Power of 10 to multiply value by
+                        algo:
+                          type: integer
+                        fm:
+                          type: integer
+
+    GetActivityResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            more:
+              type: boolean
+            offset:
+              type: integer
+            activities:
+              type: array
+              items:
+                type: object
+                properties:
+                  date:
+                    type: string
+                    description: Date in YYYY-MM-DD format
+                  timezone:
+                    type: string
+                  deviceid:
+                    type: string
+                  hash_deviceid:
+                    type: string
+                  brand:
+                    type: integer
+                  is_tracker:
+                    type: boolean
+                  steps:
+                    type: integer
+                  distance:
+                    type: number
+                    description: Distance in meters
+                  elevation:
+                    type: number
+                    description: Elevation in meters
+                  soft:
+                    type: integer
+                    description: Light activity duration in seconds
+                  moderate:
+                    type: integer
+                    description: Moderate activity duration in seconds
+                  intense:
+                    type: integer
+                    description: Intense activity duration in seconds
+                  active:
+                    type: integer
+                    description: Total active duration in seconds
+                  calories:
+                    type: number
+                    description: Active calories burned
+                  totalcalories:
+                    type: number
+                    description: Total calories including BMR
+                  hr_average:
+                    type: integer
+                    description: Average heart rate
+                  hr_min:
+                    type: integer
+                  hr_max:
+                    type: integer
+                  hr_zone_0:
+                    type: integer
+                    description: Duration in light HR zone (seconds)
+                  hr_zone_1:
+                    type: integer
+                    description: Duration in moderate HR zone (seconds)
+                  hr_zone_2:
+                    type: integer
+                    description: Duration in intense HR zone (seconds)
+                  hr_zone_3:
+                    type: integer
+                    description: Duration in peak HR zone (seconds)
+
+    GetIntradayActivityResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            series:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  steps:
+                    type: integer
+                  elevation:
+                    type: number
+                  calories:
+                    type: number
+                  distance:
+                    type: number
+                  stroke:
+                    type: integer
+                  pool_lap:
+                    type: integer
+                  duration:
+                    type: integer
+                  heart_rate:
+                    type: integer
+                  spo2_auto:
+                    type: number
+
+    GetWorkoutsResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            more:
+              type: boolean
+            offset:
+              type: integer
+            series:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  category:
+                    type: integer
+                    description: "1=Walk, 2=Run, 3=Hiking, 4=Skating, 5=BMX, 6=Bicycling, 7=Swimming, 8=Surfing, 12=Tennis, 13=Basketball, 14=Soccer, 16=Football, 18=Yoga, 28=Boxing, 30=Skiing, 35=Snowboarding, 36=Climbing, etc."
+                  timezone:
+                    type: string
+                  startdate:
+                    type: integer
+                  enddate:
+                    type: integer
+                  date:
+                    type: string
+                  modified:
+                    type: integer
+                  deviceid:
+                    type: string
+                  hash_deviceid:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      calories:
+                        type: number
+                      effduration:
+                        type: integer
+                        description: Effective duration in seconds
+                      intensity:
+                        type: integer
+                      manual_distance:
+                        type: number
+                      manual_calories:
+                        type: number
+                      hr_average:
+                        type: integer
+                      hr_min:
+                        type: integer
+                      hr_max:
+                        type: integer
+                      hr_zone_0:
+                        type: integer
+                      hr_zone_1:
+                        type: integer
+                      hr_zone_2:
+                        type: integer
+                      hr_zone_3:
+                        type: integer
+                      pause_duration:
+                        type: integer
+                      spo2_average:
+                        type: number
+                      steps:
+                        type: integer
+                      distance:
+                        type: number
+                      elevation:
+                        type: number
+                      pool_laps:
+                        type: integer
+                      strokes:
+                        type: integer
+                      pool_length:
+                        type: integer
+
+    SleepGetResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            series:
+              type: array
+              items:
+                type: object
+                properties:
+                  startdate:
+                    type: integer
+                    description: Unix timestamp
+                  enddate:
+                    type: integer
+                  state:
+                    type: integer
+                    description: "0=Awake, 1=Light Sleep, 2=Deep Sleep, 3=REM"
+                  model:
+                    type: integer
+                  model_id:
+                    type: integer
+                  hash_deviceid:
+                    type: string
+                  hr:
+                    type: object
+                    additionalProperties:
+                      type: integer
+                    description: Heart rate time series (timestamp -> HR)
+                  rr:
+                    type: object
+                    additionalProperties:
+                      type: integer
+                    description: Respiration rate time series
+                  snoring:
+                    type: object
+                    additionalProperties:
+                      type: integer
+                    description: Snoring intensity time series
+                  sdnn_1:
+                    type: object
+                    additionalProperties:
+                      type: number
+                    description: HRV SDNN time series
+                  rmssd:
+                    type: object
+                    additionalProperties:
+                      type: number
+                    description: HRV RMSSD time series
+
+    SleepGetSummaryResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            more:
+              type: boolean
+            offset:
+              type: integer
+            series:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  timezone:
+                    type: string
+                  model:
+                    type: integer
+                  model_id:
+                    type: integer
+                  hash_deviceid:
+                    type: string
+                  startdate:
+                    type: integer
+                  enddate:
+                    type: integer
+                  date:
+                    type: string
+                  modified:
+                    type: integer
+                  data:
+                    type: object
+                    properties:
+                      breathing_disturbances_intensity:
+                        type: number
+                      deepsleepduration:
+                        type: integer
+                        description: Deep sleep duration in seconds
+                      lightsleepduration:
+                        type: integer
+                        description: Light sleep duration in seconds
+                      remsleepduration:
+                        type: integer
+                        description: REM sleep duration in seconds
+                      wakeupduration:
+                        type: integer
+                        description: Time awake in seconds
+                      durationtosleep:
+                        type: integer
+                        description: Time to fall asleep in seconds
+                      durationtowakeup:
+                        type: integer
+                        description: Time to wake up in seconds
+                      hr_average:
+                        type: integer
+                      hr_max:
+                        type: integer
+                      hr_min:
+                        type: integer
+                      rr_average:
+                        type: integer
+                        description: Average respiration rate
+                      rr_max:
+                        type: integer
+                      rr_min:
+                        type: integer
+                      sleep_score:
+                        type: integer
+                        description: Sleep score 0-100
+                      snoring:
+                        type: integer
+                        description: Total snoring duration in seconds
+                      snoringepisodecount:
+                        type: integer
+                      wakeupcount:
+                        type: integer
+                      out_of_bed_count:
+                        type: integer
+                      total_sleep_time:
+                        type: integer
+                      total_timeinbed:
+                        type: integer
+                      sleep_efficiency:
+                        type: number
+                        description: Sleep efficiency percentage
+                      sleep_latency:
+                        type: integer
+                      wakeup_latency:
+                        type: integer
+                      asleepduration:
+                        type: integer
+                      night_events:
+                        type: integer
+                      nb_rem_episodes:
+                        type: integer
+                      apnea_hypopnea_index:
+                        type: number
+
+    HeartListResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            more:
+              type: boolean
+            offset:
+              type: integer
+            series:
+              type: array
+              items:
+                type: object
+                properties:
+                  deviceid:
+                    type: string
+                  model:
+                    type: integer
+                  ecg:
+                    type: object
+                    properties:
+                      signalid:
+                        type: integer
+                      afib:
+                        type: integer
+                        description: "0=negative, 1=positive, 2=inconclusive"
+                  bloodpressure:
+                    type: object
+                    properties:
+                      diastole:
+                        type: integer
+                      systole:
+                        type: integer
+                  heart_rate:
+                    type: integer
+                  timestamp:
+                    type: integer
+
+    HeartGetResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            signal:
+              type: array
+              items:
+                type: integer
+              description: Raw ECG signal values
+            sampling_frequency:
+              type: integer
+              description: Sampling frequency in Hz
+            wearposition:
+              type: integer
+
+    UserGetDeviceResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            devices:
+              type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: Device type
+                  model:
+                    type: string
+                    description: Device model name
+                  model_id:
+                    type: integer
+                  battery:
+                    type: string
+                    description: Battery level (high, medium, low)
+                  deviceid:
+                    type: string
+                  hash_deviceid:
+                    type: string
+                  timezone:
+                    type: string
+                  last_session_date:
+                    type: integer
+
+    NotifyListResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            profiles:
+              type: array
+              items:
+                type: object
+                properties:
+                  appli:
+                    type: integer
+                    description: "1=Weight, 2=Temperature, 4=Blood pressure, 16=Activity, 44=Sleep, 46=User info, 50=Bed in/out, 51=ECG, 52=SpO2, 54=Walking speed"
+                  callbackurl:
+                    type: string
+                  expires:
+                    type: integer
+                  comment:
+                    type: string
+
+    SuccessResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+
+paths:
+  /measure:
+    post:
+      operationId: measure-getmeas
+      summary: Get body measurements
+      description: |
+        Retrieves body measurements including weight, body composition, blood pressure,
+        heart rate, temperature, SpO2, and more.
+      tags:
+        - Measure
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [getmeas]
+                  description: Must be "getmeas"
+                meastype:
+                  type: integer
+                  description: "Filter by measurement type (1=Weight, 4=Height, 9=DiastolicBP, 10=SystolicBP, 11=HeartPulse, 54=SpO2, etc.)"
+                meastypes:
+                  type: string
+                  description: Comma-separated list of measurement type IDs
+                category:
+                  type: integer
+                  description: "1=real measures, 2=user objectives"
+                startdate:
+                  type: integer
+                  description: Start date as Unix timestamp
+                enddate:
+                  type: integer
+                  description: End date as Unix timestamp
+                lastupdate:
+                  type: integer
+                  description: Unix timestamp to get data updated after this time
+                offset:
+                  type: integer
+                  description: Pagination offset (from previous response)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasureGetMeasResponse'
+
+  /v2/measure:
+    post:
+      operationId: measurev2-getactivity
+      summary: Get daily activity data
+      description: |
+        Retrieves daily activity summaries including steps, distance, calories,
+        heart rate zones, and activity durations.
+      tags:
+        - Activity
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [getactivity]
+                  description: Action to perform
+                startdateymd:
+                  type: string
+                  description: Start date in YYYY-MM-DD format
+                enddateymd:
+                  type: string
+                  description: End date in YYYY-MM-DD format
+                lastupdate:
+                  type: integer
+                  description: Unix timestamp for delta updates
+                offset:
+                  type: integer
+                  description: Pagination offset
+                data_fields:
+                  type: string
+                  description: "Comma-separated fields: steps,distance,elevation,soft,moderate,intense,active,calories,totalcalories,hr_average,hr_min,hr_max,hr_zone_0,hr_zone_1,hr_zone_2,hr_zone_3"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetActivityResponse'
+
+  /v2/measure-intradayactivity:
+    post:
+      operationId: measurev2-getintradayactivity
+      summary: Get intraday activity data
+      description: |
+        Retrieves high-frequency intraday activity data including steps, heart rate,
+        calories, distance at sub-daily granularity.
+      tags:
+        - Activity
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - startdate
+                - enddate
+              properties:
+                action:
+                  type: string
+                  enum: [getintradayactivity]
+                startdate:
+                  type: integer
+                  description: Start date as Unix timestamp
+                enddate:
+                  type: integer
+                  description: End date as Unix timestamp
+                data_fields:
+                  type: string
+                  description: "Comma-separated fields: steps,elevation,calories,distance,stroke,pool_lap,duration,heart_rate,spo2_auto"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetIntradayActivityResponse'
+
+  /v2/measure-workouts:
+    post:
+      operationId: measurev2-getworkouts
+      summary: Get workout data
+      description: |
+        Retrieves workout sessions with calories, duration, heart rate, distance, and sport type.
+      tags:
+        - Activity
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [getworkouts]
+                startdateymd:
+                  type: string
+                  description: Start date in YYYY-MM-DD format
+                enddateymd:
+                  type: string
+                  description: End date in YYYY-MM-DD format
+                lastupdate:
+                  type: integer
+                offset:
+                  type: integer
+                data_fields:
+                  type: string
+                  description: "Comma-separated fields: calories,effduration,intensity,manual_distance,manual_calories,hr_average,hr_min,hr_max,hr_zone_0,hr_zone_1,hr_zone_2,hr_zone_3,pause_duration,spo2_average,steps,distance,elevation,pool_laps,strokes,pool_length"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWorkoutsResponse'
+
+  /v2/sleep:
+    post:
+      operationId: sleepv2-get
+      summary: Get detailed sleep data
+      description: |
+        Retrieves detailed sleep data including sleep states (awake, light, deep, REM),
+        heart rate, respiration rate, snoring, and HRV time series.
+      tags:
+        - Sleep
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - startdate
+                - enddate
+              properties:
+                action:
+                  type: string
+                  enum: [get]
+                startdate:
+                  type: integer
+                  description: Start date as Unix timestamp
+                enddate:
+                  type: integer
+                  description: End date as Unix timestamp
+                data_fields:
+                  type: string
+                  description: "Comma-separated fields: hr,rr,snoring,sdnn_1,rmssd"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepGetResponse'
+
+  /v2/sleep-getsummary:
+    post:
+      operationId: sleepv2-getsummary
+      summary: Get sleep summary data
+      description: |
+        Retrieves sleep summary data including sleep score, stage durations,
+        heart rate stats, respiration stats, snoring, and sleep efficiency.
+      tags:
+        - Sleep
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [getsummary]
+                startdateymd:
+                  type: string
+                  description: Start date in YYYY-MM-DD format
+                enddateymd:
+                  type: string
+                  description: End date in YYYY-MM-DD format
+                lastupdate:
+                  type: integer
+                offset:
+                  type: integer
+                data_fields:
+                  type: string
+                  description: "Comma-separated fields: breathing_disturbances_intensity,deepsleepduration,lightsleepduration,remsleepduration,wakeupduration,durationtosleep,durationtowakeup,hr_average,hr_max,hr_min,rr_average,rr_max,rr_min,sleep_score,snoring,snoringepisodecount,wakeupcount,out_of_bed_count,total_sleep_time,total_timeinbed,sleep_efficiency,sleep_latency,wakeup_latency,nb_rem_episodes,apnea_hypopnea_index,night_events"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SleepGetSummaryResponse'
+
+  /v2/heart:
+    post:
+      operationId: heartv2-list
+      summary: List heart measurements
+      description: |
+        Retrieves a list of ECG recordings and blood pressure measurements
+        including atrial fibrillation detection results.
+      tags:
+        - Heart
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [list]
+                startdate:
+                  type: integer
+                  description: Start date as Unix timestamp
+                enddate:
+                  type: integer
+                  description: End date as Unix timestamp
+                offset:
+                  type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeartListResponse'
+
+  /v2/heart-get:
+    post:
+      operationId: heartv2-get
+      summary: Get ECG signal data
+      description: |
+        Retrieves the raw ECG signal data for a specific recording identified by signalid.
+      tags:
+        - Heart
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - signalid
+              properties:
+                action:
+                  type: string
+                  enum: [get]
+                signalid:
+                  type: integer
+                  description: Signal ID from heart list response
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HeartGetResponse'
+
+  /v2/user:
+    post:
+      operationId: user-getdevice
+      summary: Get user devices
+      description: |
+        Retrieves a list of devices associated with the authenticated user
+        including battery status, model, and timezone.
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [getdevice]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGetDeviceResponse'
+
+  /v2/notify-list:
+    post:
+      operationId: notify-list
+      summary: List webhook subscriptions
+      description: |
+        Lists all active webhook notification subscriptions for the authenticated user.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [list]
+                appli:
+                  type: integer
+                  description: "Filter by data type: 1=Weight, 2=Temperature, 4=Blood pressure, 16=Activity, 44=Sleep, 46=User, 50=Bed in/out, 51=ECG, 52=SpO2"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotifyListResponse'
+
+  /v2/notify-subscribe:
+    post:
+      operationId: notify-subscribe
+      summary: Subscribe to webhook notifications
+      description: |
+        Creates a webhook subscription to receive notifications when new data is available.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - callbackurl
+                - appli
+              properties:
+                action:
+                  type: string
+                  enum: [subscribe]
+                callbackurl:
+                  type: string
+                  description: URL to receive webhook notifications
+                appli:
+                  type: integer
+                  description: "Data type: 1=Weight, 2=Temperature, 4=Blood pressure, 16=Activity, 44=Sleep, 46=User, 50=Bed in/out, 51=ECG, 52=SpO2"
+                comment:
+                  type: string
+                  description: Optional comment for the subscription
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  /v2/notify-revoke:
+    post:
+      operationId: notify-revoke
+      summary: Revoke webhook subscription
+      description: |
+        Removes an existing webhook notification subscription.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - callbackurl
+                - appli
+              properties:
+                action:
+                  type: string
+                  enum: [revoke]
+                callbackurl:
+                  type: string
+                  description: URL of the subscription to revoke
+                appli:
+                  type: integer
+                  description: Data type of the subscription to revoke
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+
+  /v2/notify-get:
+    post:
+      operationId: notify-get
+      summary: Get webhook subscription details
+      description: |
+        Retrieves details of a specific webhook notification subscription.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - callbackurl
+                - appli
+              properties:
+                action:
+                  type: string
+                  enum: [get]
+                callbackurl:
+                  type: string
+                appli:
+                  type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotifyListResponse'
