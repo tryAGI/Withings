@@ -65,6 +65,14 @@ namespace Withings
 
             typeof(global::Withings.JsonConverters.NotifyGetRequestActionNullableJsonConverter),
 
+            typeof(global::Withings.JsonConverters.UserGetinfoRequestActionJsonConverter),
+
+            typeof(global::Withings.JsonConverters.UserGetinfoRequestActionNullableJsonConverter),
+
+            typeof(global::Withings.JsonConverters.NotifyUpdateRequestActionJsonConverter),
+
+            typeof(global::Withings.JsonConverters.NotifyUpdateRequestActionNullableJsonConverter),
+
             typeof(global::Withings.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.JsonSerializerContextTypes))]
@@ -120,6 +128,10 @@ namespace Withings
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyListResponseBody))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Withings.NotifyListResponseBodyProfile>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyListResponseBodyProfile))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.UserGetInfoResponse))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.UserGetInfoResponseBody))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.UserGetInfoResponseBodyUser))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.UserGetInfoResponseBodyUserUnitPref))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.SuccessResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.MeasureGetmeasRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.MeasureGetmeasRequestAction), TypeInfoPropertyName = "MeasureGetmeasRequestAction2")]
@@ -147,6 +159,10 @@ namespace Withings
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyRevokeRequestAction), TypeInfoPropertyName = "NotifyRevokeRequestAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyGetRequest))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyGetRequestAction), TypeInfoPropertyName = "NotifyGetRequestAction2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.UserGetinfoRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.UserGetinfoRequestAction), TypeInfoPropertyName = "UserGetinfoRequestAction2")]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyUpdateRequest))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.NotifyUpdateRequestAction), TypeInfoPropertyName = "NotifyUpdateRequestAction2")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Withings.MeasureGetMeasResponseBodyMeasuregrp>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Withings.MeasureGetMeasResponseBodyMeasuregrpMeasure>))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<global::Withings.GetActivityResponseBodyActivitie>))]

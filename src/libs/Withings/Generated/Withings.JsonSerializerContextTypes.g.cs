@@ -236,111 +236,143 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.SuccessResponse? Type52 { get; set; }
+        public global::Withings.UserGetInfoResponse? Type52 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.MeasureGetmeasRequest? Type53 { get; set; }
+        public global::Withings.UserGetInfoResponseBody? Type53 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.MeasureGetmeasRequestAction? Type54 { get; set; }
+        public global::Withings.UserGetInfoResponseBodyUser? Type54 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Measurev2GetactivityRequest? Type55 { get; set; }
+        public global::Withings.UserGetInfoResponseBodyUserUnitPref? Type55 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Measurev2GetactivityRequestAction? Type56 { get; set; }
+        public global::Withings.SuccessResponse? Type56 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Measurev2GetintradayactivityRequest? Type57 { get; set; }
+        public global::Withings.MeasureGetmeasRequest? Type57 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Measurev2GetintradayactivityRequestAction? Type58 { get; set; }
+        public global::Withings.MeasureGetmeasRequestAction? Type58 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Measurev2GetworkoutsRequest? Type59 { get; set; }
+        public global::Withings.Measurev2GetactivityRequest? Type59 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Measurev2GetworkoutsRequestAction? Type60 { get; set; }
+        public global::Withings.Measurev2GetactivityRequestAction? Type60 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Sleepv2GetRequest? Type61 { get; set; }
+        public global::Withings.Measurev2GetintradayactivityRequest? Type61 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Sleepv2GetRequestAction? Type62 { get; set; }
+        public global::Withings.Measurev2GetintradayactivityRequestAction? Type62 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Sleepv2GetsummaryRequest? Type63 { get; set; }
+        public global::Withings.Measurev2GetworkoutsRequest? Type63 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Sleepv2GetsummaryRequestAction? Type64 { get; set; }
+        public global::Withings.Measurev2GetworkoutsRequestAction? Type64 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Heartv2ListRequest? Type65 { get; set; }
+        public global::Withings.Sleepv2GetRequest? Type65 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Heartv2ListRequestAction? Type66 { get; set; }
+        public global::Withings.Sleepv2GetRequestAction? Type66 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Heartv2GetRequest? Type67 { get; set; }
+        public global::Withings.Sleepv2GetsummaryRequest? Type67 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.Heartv2GetRequestAction? Type68 { get; set; }
+        public global::Withings.Sleepv2GetsummaryRequestAction? Type68 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.UserGetdeviceRequest? Type69 { get; set; }
+        public global::Withings.Heartv2ListRequest? Type69 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.UserGetdeviceRequestAction? Type70 { get; set; }
+        public global::Withings.Heartv2ListRequestAction? Type70 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifyListRequest? Type71 { get; set; }
+        public global::Withings.Heartv2GetRequest? Type71 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifyListRequestAction? Type72 { get; set; }
+        public global::Withings.Heartv2GetRequestAction? Type72 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifySubscribeRequest? Type73 { get; set; }
+        public global::Withings.UserGetdeviceRequest? Type73 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifySubscribeRequestAction? Type74 { get; set; }
+        public global::Withings.UserGetdeviceRequestAction? Type74 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifyRevokeRequest? Type75 { get; set; }
+        public global::Withings.NotifyListRequest? Type75 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifyRevokeRequestAction? Type76 { get; set; }
+        public global::Withings.NotifyListRequestAction? Type76 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifyGetRequest? Type77 { get; set; }
+        public global::Withings.NotifySubscribeRequest? Type77 { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        public global::Withings.NotifyGetRequestAction? Type78 { get; set; }
+        public global::Withings.NotifySubscribeRequestAction? Type78 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.NotifyRevokeRequest? Type79 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.NotifyRevokeRequestAction? Type80 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.NotifyGetRequest? Type81 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.NotifyGetRequestAction? Type82 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.UserGetinfoRequest? Type83 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.UserGetinfoRequestAction? Type84 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.NotifyUpdateRequest? Type85 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public global::Withings.NotifyUpdateRequestAction? Type86 { get; set; }
 
         /// <summary>
         /// 

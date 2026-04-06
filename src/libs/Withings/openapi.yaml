@@ -550,6 +550,51 @@ components:
                   comment:
                     type: string
 
+    UserGetInfoResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/Status'
+        body:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                userid:
+                  type: integer
+                firstname:
+                  type: string
+                lastname:
+                  type: string
+                shortname:
+                  type: string
+                email:
+                  type: string
+                gender:
+                  type: integer
+                  description: "0=male, 1=female"
+                birthdate:
+                  type: string
+                  description: Date of birth in YYYY-MM-DD format
+                timezone:
+                  type: string
+                unit_pref:
+                  type: object
+                  properties:
+                    weight:
+                      type: integer
+                      description: "1=kg, 2=lbs, 14=stones"
+                    height:
+                      type: integer
+                      description: "6=cm, 7=ft/in"
+                    distance:
+                      type: integer
+                      description: "6=km, 7=miles"
+                    temperature:
+                      type: integer
+                      description: "11=Celsius, 13=Fahrenheit"
+
     SuccessResponse:
       type: object
       properties:
@@ -1053,3 +1098,77 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyListResponse'
+
+  /v2/user-getinfo:
+    post:
+      operationId: user-getinfo
+      summary: Get user personal info
+      description: |
+        Retrieves the authenticated user's personal information including name,
+        email, gender, birthdate, timezone, and unit preferences.
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+              properties:
+                action:
+                  type: string
+                  enum: [getinfo]
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGetInfoResponse'
+
+  /v2/notify-update:
+    post:
+      operationId: notify-update
+      summary: Update webhook subscription
+      description: |
+        Updates an existing webhook notification subscription with a new callback URL or comment.
+      tags:
+        - Notifications
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required:
+                - action
+                - callbackurl
+                - appli
+              properties:
+                action:
+                  type: string
+                  enum: [update]
+                callbackurl:
+                  type: string
+                  description: Current callback URL of the subscription
+                new_callbackurl:
+                  type: string
+                  description: New callback URL to update to
+                appli:
+                  type: integer
+                  description: Data type of the subscription
+                new_appli:
+                  type: integer
+                  description: New data type to update to
+                comment:
+                  type: string
+                  description: Updated comment
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'

@@ -16,7 +16,7 @@
 <div class="docs-feature-grid">
   <div class="docs-feature-card">
     <h3>Generated from the source spec</h3>
-    <p>Built from <a href="https://example.com/placeholder.yaml">Withings's OpenAPI definition</a> so the SDK stays close to the upstream API surface.</p>
+    <p>Built from a manually-crafted OpenAPI spec covering Withings's Health API so the SDK stays close to the upstream API surface.</p>
   </div>
   <div class="docs-feature-card">
     <h3>Auto-updated</h3>
@@ -37,11 +37,77 @@
 ```csharp
 using Withings;
 
-using var client = new WithingsClient(apiKey);
+// Pass your OAuth2 access token (see Authentication below)
+using var client = new WithingsClient(accessToken);
 ```
 
 <!-- EXAMPLES:START -->
 <!-- EXAMPLES:END -->
+
+## Authentication
+
+Withings uses **OAuth 2.0 Authorization Code** flow. This SDK handles API calls with a Bearer token — you are responsible for obtaining the access token via OAuth2.
+
+### Step 1: Register your application
+
+Register at the [Withings Partner Hub](https://developer.withings.com/) to get your `client_id` and `client_secret`.
+
+### Step 2: Redirect the user to authorize
+
+```
+https://account.withings.com/oauth2_user/authorize2
+  ?response_type=code
+  &client_id=YOUR_CLIENT_ID
+  &state=RANDOM_STATE
+  &scope=user.info,user.metrics,user.activity
+  &redirect_uri=YOUR_CALLBACK_URL
+```
+
+**Available scopes:** `user.info`, `user.metrics`, `user.activity`, `user.sleepevents`
+
+### Step 3: Exchange the authorization code for tokens
+
+```http
+POST https://wbsapi.withings.net/v2/oauth2
+Content-Type: application/x-www-form-urlencoded
+
+action=requesttoken
+&grant_type=authorization_code
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+&code=AUTH_CODE_FROM_CALLBACK
+&redirect_uri=YOUR_CALLBACK_URL
+```
+
+The response contains `access_token` (valid ~3 hours) and `refresh_token` (valid ~1 year).
+
+### Step 4: Use the access token
+
+```csharp
+using var client = new WithingsClient(accessToken);
+
+// Get body measurements (weight, BP, SpO2, etc.)
+var measurements = await client.Measure.MeasureGetmeasAsync(...);
+
+// Get sleep summary
+var sleep = await client.Sleep.Sleepv2GetsummaryAsync(...);
+
+// Get daily activity (steps, calories)
+var activity = await client.Activity.Measurev2GetactivityAsync(...);
+```
+
+### Step 5: Refresh tokens
+
+```http
+POST https://wbsapi.withings.net/v2/oauth2
+Content-Type: application/x-www-form-urlencoded
+
+action=requesttoken
+&grant_type=refresh_token
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+&refresh_token=YOUR_REFRESH_TOKEN
+```
 
 ## Support
 
