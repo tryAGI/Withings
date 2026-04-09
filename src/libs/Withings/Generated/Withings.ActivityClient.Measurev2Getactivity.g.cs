@@ -5,6 +5,25 @@ namespace Withings
 {
     public partial class ActivityClient
     {
+
+
+        private static readonly global::Withings.EndPointSecurityRequirement s_Measurev2GetactivitySecurityRequirement0 =
+            new global::Withings.EndPointSecurityRequirement
+            {
+                Authorizations = new global::Withings.EndPointAuthorizationRequirement[]
+                {                    new global::Withings.EndPointAuthorizationRequirement
+                    {
+                        Type = "Http",
+                        Location = "Header",
+                        Name = "Bearer",
+                        FriendlyName = "Bearer",
+                    },
+                },
+            };
+        private static readonly global::Withings.EndPointSecurityRequirement[] s_Measurev2GetactivitySecurityRequirements =
+            new global::Withings.EndPointSecurityRequirement[]
+            {                s_Measurev2GetactivitySecurityRequirement0,
+            };
         partial void PrepareMeasurev2GetactivityArguments(
             global::System.Net.Http.HttpClient httpClient,
             global::Withings.Measurev2GetactivityRequest request);
@@ -42,9 +61,15 @@ namespace Withings
                 httpClient: HttpClient,
                 request: request);
 
+
+            var __authorizations = global::Withings.EndPointSecurityResolver.ResolveAuthorizations(
+                availableAuthorizations: Authorizations,
+                securityRequirements: s_Measurev2GetactivitySecurityRequirements,
+                operationName: "Measurev2GetactivityAsync");
+
             var __pathBuilder = new global::Withings.PathBuilder(
                 path: "/v2/measure",
-                baseUri: HttpClient.BaseAddress); 
+                baseUri: HttpClient.BaseAddress);
             var __path = __pathBuilder.ToString();
             using var __httpRequest = new global::System.Net.Http.HttpRequestMessage(
                 method: global::System.Net.Http.HttpMethod.Post,
@@ -54,7 +79,7 @@ namespace Withings
             __httpRequest.VersionPolicy = global::System.Net.Http.HttpVersionPolicy.RequestVersionOrHigher;
 #endif
 
-            foreach (var __authorization in Authorizations)
+            foreach (var __authorization in __authorizations)
             {
                 if (__authorization.Type == "Http" ||
                     __authorization.Type == "OAuth2")
