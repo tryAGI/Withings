@@ -6,6 +6,7 @@ namespace Withings
     public sealed partial class WithingsClient
     {
         /// <inheritdoc cref="WithingsClient(global::System.Net.Http.HttpClient?, global::System.Uri?, global::System.Collections.Generic.List{global::Withings.EndPointAuthorization}?, bool)"/>
+
         public WithingsClient(
             string apiKey,
             global::System.Net.Http.HttpClient? httpClient = null,

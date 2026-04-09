@@ -15,7 +15,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public const string DefaultBaseUrl = "https://wbsapi.withings.net";
+        public const string DefaultBaseUrl = "https://wbsapi.withings.net/";
 
         private bool _disposeHttpClient = true;
 
