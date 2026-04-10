@@ -25,6 +25,7 @@ namespace Withings
             Authorizations.Add(new global::Withings.EndPointAuthorization
             {
                 Type = "Http",
+                SchemeId = "HttpBearer",
                 Location = "Header",
                 Name = "Bearer",
                 Value = apiKey,

@@ -10,11 +10,13 @@ namespace Withings
         /// heart rate, temperature, SpO2, and more.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Withings.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.MeasureGetMeasResponse> MeasureGetmeasAsync(
 
             global::Withings.MeasureGetmeasRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get body measurements<br/>
@@ -45,6 +47,7 @@ namespace Withings
         /// <param name="offset">
         /// Pagination offset (from previous response)
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.MeasureGetMeasResponse> MeasureGetmeasAsync(
@@ -56,6 +59,7 @@ namespace Withings
             global::System.DateTimeOffset? enddate = default,
             global::System.DateTimeOffset? lastupdate = default,
             int? offset = default,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

@@ -10,11 +10,13 @@ namespace Withings
         /// heart rate zones, and activity durations.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Withings.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.GetActivityResponse> Measurev2GetactivityAsync(
 
             global::Withings.Measurev2GetactivityRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get daily activity data<br/>
@@ -39,6 +41,7 @@ namespace Withings
         /// <param name="dataFields">
         /// Comma-separated fields: steps,distance,elevation,soft,moderate,intense,active,calories,totalcalories,hr_average,hr_min,hr_max,hr_zone_0,hr_zone_1,hr_zone_2,hr_zone_3
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.GetActivityResponse> Measurev2GetactivityAsync(
@@ -48,6 +51,7 @@ namespace Withings
             global::System.DateTimeOffset? lastupdate = default,
             int? offset = default,
             string? dataFields = default,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
