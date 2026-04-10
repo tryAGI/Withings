@@ -10,11 +10,13 @@ namespace Withings
         /// including battery status, model, and timezone.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Withings.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.UserGetDeviceResponse> UserGetdeviceAsync(
 
             global::Withings.UserGetdeviceRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get user devices<br/>
@@ -22,10 +24,12 @@ namespace Withings
         /// including battery status, model, and timezone.
         /// </summary>
         /// <param name="action"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.UserGetDeviceResponse> UserGetdeviceAsync(
             global::Withings.UserGetdeviceRequestAction action = default,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }

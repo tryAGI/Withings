@@ -9,11 +9,13 @@ namespace Withings
         /// Creates a webhook subscription to receive notifications when new data is available.
         /// </summary>
         /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::Withings.ApiException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.SuccessResponse> NotifySubscribeAsync(
 
             global::Withings.NotifySubscribeRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Subscribe to webhook notifications<br/>
@@ -29,6 +31,7 @@ namespace Withings
         /// <param name="comment">
         /// Optional comment for the subscription
         /// </param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>
         /// <exception cref="global::System.InvalidOperationException"></exception>
         global::System.Threading.Tasks.Task<global::Withings.SuccessResponse> NotifySubscribeAsync(
@@ -36,6 +39,7 @@ namespace Withings
             int appli,
             global::Withings.NotifySubscribeRequestAction action = default,
             string? comment = default,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
             global::System.Threading.CancellationToken cancellationToken = default);
     }
 }
