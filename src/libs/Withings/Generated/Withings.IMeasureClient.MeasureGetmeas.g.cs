@@ -23,6 +23,20 @@ namespace Withings
         /// Retrieves body measurements including weight, body composition, blood pressure,<br/>
         /// heart rate, temperature, SpO2, and more.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Withings.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Withings.AutoSDKHttpResponse<global::Withings.MeasureGetMeasResponse>> MeasureGetmeasAsResponseAsync(
+
+            global::Withings.MeasureGetmeasRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get body measurements<br/>
+        /// Retrieves body measurements including weight, body composition, blood pressure,<br/>
+        /// heart rate, temperature, SpO2, and more.
+        /// </summary>
         /// <param name="action">
         /// Must be "getmeas"
         /// </param>
