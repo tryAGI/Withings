@@ -23,6 +23,20 @@ namespace Withings
         /// Retrieves daily activity summaries including steps, distance, calories,<br/>
         /// heart rate zones, and activity durations.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Withings.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Withings.AutoSDKHttpResponse<global::Withings.GetActivityResponse>> Measurev2GetactivityAsResponseAsync(
+
+            global::Withings.Measurev2GetactivityRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get daily activity data<br/>
+        /// Retrieves daily activity summaries including steps, distance, calories,<br/>
+        /// heart rate zones, and activity durations.
+        /// </summary>
         /// <param name="action">
         /// Action to perform
         /// </param>
