@@ -68,5 +68,6 @@ namespace Withings
         public NotifyListResponseBodyProfile()
         {
         }
+
     }
 }

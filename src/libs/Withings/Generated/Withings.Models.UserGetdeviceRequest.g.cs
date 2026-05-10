@@ -40,5 +40,6 @@ namespace Withings
         public UserGetdeviceRequest()
         {
         }
+
     }
 }

@@ -91,5 +91,6 @@ namespace Withings
         public Measurev2GetworkoutsRequest()
         {
         }
+
     }
 }

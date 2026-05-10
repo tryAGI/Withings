@@ -122,5 +122,6 @@ namespace Withings
         public GetWorkoutsResponseBodySerie()
         {
         }
+
     }
 }

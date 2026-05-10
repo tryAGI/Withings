@@ -111,5 +111,6 @@ namespace Withings
         public GetIntradayActivityResponseBodySeries2()
         {
         }
+
     }
 }

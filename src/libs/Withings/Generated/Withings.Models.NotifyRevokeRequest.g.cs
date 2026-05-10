@@ -64,5 +64,6 @@ namespace Withings
         public NotifyRevokeRequest()
         {
         }
+
     }
 }

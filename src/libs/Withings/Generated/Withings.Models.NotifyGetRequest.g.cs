@@ -60,5 +60,6 @@ namespace Withings
         public NotifyGetRequest()
         {
         }
+
     }
 }

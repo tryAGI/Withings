@@ -91,5 +91,6 @@ namespace Withings
         public Sleepv2GetsummaryRequest()
         {
         }
+
     }
 }

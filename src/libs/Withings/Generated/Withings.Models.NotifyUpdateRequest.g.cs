@@ -97,5 +97,6 @@ namespace Withings
         public NotifyUpdateRequest()
         {
         }
+
     }
 }
