@@ -120,5 +120,6 @@ namespace Withings
         public SleepGetSummaryResponseBodySerie()
         {
         }
+
     }
 }

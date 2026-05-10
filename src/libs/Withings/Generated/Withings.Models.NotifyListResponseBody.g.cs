@@ -39,5 +39,6 @@ namespace Withings
         public NotifyListResponseBody()
         {
         }
+
     }
 }

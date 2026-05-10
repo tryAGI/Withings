@@ -144,5 +144,6 @@ namespace Withings
         public SleepGetResponseBodySerie()
         {
         }
+
     }
 }

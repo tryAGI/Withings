@@ -41,5 +41,6 @@ namespace Withings
         public SuccessResponse()
         {
         }
+
     }
 }

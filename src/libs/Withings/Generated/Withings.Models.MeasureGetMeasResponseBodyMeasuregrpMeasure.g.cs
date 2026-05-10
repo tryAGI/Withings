@@ -81,5 +81,6 @@ namespace Withings
         public MeasureGetMeasResponseBodyMeasuregrpMeasure()
         {
         }
+
     }
 }

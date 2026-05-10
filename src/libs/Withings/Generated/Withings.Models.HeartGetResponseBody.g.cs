@@ -61,5 +61,6 @@ namespace Withings
         public HeartGetResponseBody()
         {
         }
+
     }
 }

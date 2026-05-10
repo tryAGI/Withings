@@ -98,5 +98,6 @@ namespace Withings
         public Measurev2GetactivityRequest()
         {
         }
+
     }
 }

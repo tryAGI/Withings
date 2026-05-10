@@ -77,5 +77,6 @@ namespace Withings
         public Sleepv2GetRequest()
         {
         }
+
     }
 }

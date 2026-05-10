@@ -52,5 +52,6 @@ namespace Withings
         public Heartv2GetRequest()
         {
         }
+
     }
 }

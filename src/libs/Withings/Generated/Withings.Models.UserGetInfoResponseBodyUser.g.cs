@@ -115,5 +115,6 @@ namespace Withings
         public UserGetInfoResponseBodyUser()
         {
         }
+
     }
 }
