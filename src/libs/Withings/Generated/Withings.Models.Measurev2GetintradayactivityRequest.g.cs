@@ -77,5 +77,6 @@ namespace Withings
         public Measurev2GetintradayactivityRequest()
         {
         }
+
     }
 }

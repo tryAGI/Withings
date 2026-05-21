@@ -23,6 +23,20 @@ namespace Withings
         /// Retrieves a list of ECG recordings and blood pressure measurements<br/>
         /// including atrial fibrillation detection results.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Withings.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Withings.AutoSDKHttpResponse<global::Withings.HeartListResponse>> Heartv2ListAsResponseAsync(
+
+            global::Withings.Heartv2ListRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List heart measurements<br/>
+        /// Retrieves a list of ECG recordings and blood pressure measurements<br/>
+        /// including atrial fibrillation detection results.
+        /// </summary>
         /// <param name="action"></param>
         /// <param name="startdate">
         /// Start date as Unix timestamp

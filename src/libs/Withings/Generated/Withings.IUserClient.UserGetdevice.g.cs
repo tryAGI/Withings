@@ -23,6 +23,20 @@ namespace Withings
         /// Retrieves a list of devices associated with the authenticated user<br/>
         /// including battery status, model, and timezone.
         /// </summary>
+        /// <param name="request"></param>
+        /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
+        /// <param name="cancellationToken">The token to cancel the operation with</param>
+        /// <exception cref="global::Withings.ApiException"></exception>
+        global::System.Threading.Tasks.Task<global::Withings.AutoSDKHttpResponse<global::Withings.UserGetDeviceResponse>> UserGetdeviceAsResponseAsync(
+
+            global::Withings.UserGetdeviceRequest request,
+            global::Withings.AutoSDKRequestOptions? requestOptions = default,
+            global::System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Get user devices<br/>
+        /// Retrieves a list of devices associated with the authenticated user<br/>
+        /// including battery status, model, and timezone.
+        /// </summary>
         /// <param name="action"></param>
         /// <param name="requestOptions">Per-request overrides such as headers, query parameters, timeout, retries, and response buffering.</param>
         /// <param name="cancellationToken">The token to cancel the operation with</param>

@@ -84,5 +84,6 @@ namespace Withings
         public HeartListResponseBodySerie()
         {
         }
+
     }
 }

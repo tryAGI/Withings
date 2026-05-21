@@ -73,5 +73,6 @@ namespace Withings
         public Heartv2ListRequest()
         {
         }
+
     }
 }

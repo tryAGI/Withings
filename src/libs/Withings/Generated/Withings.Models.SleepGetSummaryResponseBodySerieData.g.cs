@@ -293,5 +293,6 @@ namespace Withings
         public SleepGetSummaryResponseBodySerieData()
         {
         }
+
     }
 }

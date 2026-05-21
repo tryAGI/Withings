@@ -118,5 +118,6 @@ namespace Withings
         public MeasureGetMeasResponseBodyMeasuregrp()
         {
         }
+
     }
 }

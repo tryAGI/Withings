@@ -51,5 +51,6 @@ namespace Withings
         public NotifyListRequest()
         {
         }
+
     }
 }

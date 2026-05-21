@@ -108,5 +108,6 @@ namespace Withings
         public UserGetDeviceResponseBodyDevice()
         {
         }
+
     }
 }

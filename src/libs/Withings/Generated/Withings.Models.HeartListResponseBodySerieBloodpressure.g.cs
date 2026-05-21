@@ -48,5 +48,6 @@ namespace Withings
         public HeartListResponseBodySerieBloodpressure()
         {
         }
+
     }
 }

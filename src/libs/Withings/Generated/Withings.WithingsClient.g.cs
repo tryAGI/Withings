@@ -45,7 +45,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public ActivityClient Activity => new ActivityClient(HttpClient, authorizations: Authorizations, options: Options)
+        public ActivityClient Activity => new ActivityClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -54,7 +54,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public HeartClient Heart => new HeartClient(HttpClient, authorizations: Authorizations, options: Options)
+        public HeartClient Heart => new HeartClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -63,7 +63,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public MeasureClient Measure => new MeasureClient(HttpClient, authorizations: Authorizations, options: Options)
+        public MeasureClient Measure => new MeasureClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -72,7 +72,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public NotificationsClient Notifications => new NotificationsClient(HttpClient, authorizations: Authorizations, options: Options)
+        public NotificationsClient Notifications => new NotificationsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -81,7 +81,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public SleepClient Sleep => new SleepClient(HttpClient, authorizations: Authorizations, options: Options)
+        public SleepClient Sleep => new SleepClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -90,7 +90,7 @@ namespace Withings
         /// <summary>
         /// 
         /// </summary>
-        public UserClient User => new UserClient(HttpClient, authorizations: Authorizations, options: Options)
+        public UserClient User => new UserClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
             ReadResponseAsString = ReadResponseAsString,
             JsonSerializerContext = JsonSerializerContext,
@@ -119,6 +119,27 @@ namespace Withings
         }
 
         /// <summary>
+        /// Creates a new instance of the WithingsClient with explicit options but no base URL override.
+        /// Skips passing <c>baseUri</c> so the default base URL from the OpenAPI spec applies.
+        /// </summary>
+        /// <param name="httpClient">The HttpClient instance. If not provided, a new one will be created.</param>
+        /// <param name="authorizations">The authorizations to use for the requests.</param>
+        /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
+        /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
+        public WithingsClient(
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Collections.Generic.List<global::Withings.EndPointAuthorization>? authorizations,
+            global::Withings.AutoSDKClientOptions? options,
+            bool disposeHttpClient = true) : this(
+                httpClient,
+                baseUri: null,
+                authorizations,
+                options,
+                disposeHttpClient: disposeHttpClient)
+        {
+        }
+
+        /// <summary>
         /// Creates a new instance of the WithingsClient.
         /// If no httpClient is provided, a new one will be created.
         /// If no baseUri is provided, the default baseUri from OpenAPI spec will be used.
@@ -129,10 +150,10 @@ namespace Withings
         /// <param name="options">Client-wide request defaults such as headers, query parameters, retries, and timeout.</param>
         /// <param name="disposeHttpClient">Dispose the HttpClient when the instance is disposed. True by default.</param>
         public WithingsClient(
-            global::System.Net.Http.HttpClient? httpClient = null,
-            global::System.Uri? baseUri = null,
-            global::System.Collections.Generic.List<global::Withings.EndPointAuthorization>? authorizations = null,
-            global::Withings.AutoSDKClientOptions? options = null,
+            global::System.Net.Http.HttpClient? httpClient,
+            global::System.Uri? baseUri,
+            global::System.Collections.Generic.List<global::Withings.EndPointAuthorization>? authorizations,
+            global::Withings.AutoSDKClientOptions? options,
             bool disposeHttpClient = true)
         {
 
