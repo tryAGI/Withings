@@ -141,12 +141,46 @@ namespace Withings
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/x-www-form-urlencoded");
+                            var __formValues = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<string, string>>();
+                            if (request.Action != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "action",
+                                    request.Action.ToValueString()));
+                            }
+                            if (request.Startdateymd != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "startdateymd",
+                                    request.Startdateymd ?? string.Empty));
+                            }
+                            if (request.Enddateymd != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "enddateymd",
+                                    request.Enddateymd ?? string.Empty));
+                            }
+                            if (request.Lastupdate != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "lastupdate",
+                                    global::System.Convert.ToString(request.Lastupdate, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty));
+                            }
+                            if (request.Offset != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "offset",
+                                    global::System.Convert.ToString(request.Offset, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty));
+                            }
+                            if (request.DataFields != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "data_fields",
+                                    request.DataFields ?? string.Empty));
+                            }
+                            var __httpRequestContent = new global::System.Net.Http.FormUrlEncodedContent(__formValues);
                             __httpRequest.Content = __httpRequestContent;
+
                 global::Withings.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,

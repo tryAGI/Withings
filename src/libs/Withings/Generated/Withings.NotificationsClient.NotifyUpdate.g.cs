@@ -141,12 +141,40 @@ namespace Withings
                     __httpRequest.Headers.Add(__authorization.Name, __authorization.Value);
                 } 
             }
-                            var __httpRequestContentBody = request.ToJson(JsonSerializerContext);
-                            var __httpRequestContent = new global::System.Net.Http.StringContent(
-                                content: __httpRequestContentBody,
-                                encoding: global::System.Text.Encoding.UTF8,
-                                mediaType: "application/x-www-form-urlencoded");
+                            var __formValues = new global::System.Collections.Generic.List<global::System.Collections.Generic.KeyValuePair<string, string>>();
+                            if (request.Action != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "action",
+                                    request.Action.ToValueString()));
+                            }
+                            __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                "callbackurl",
+                                request.Callbackurl ?? string.Empty));
+                            if (request.NewCallbackurl != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "new_callbackurl",
+                                    request.NewCallbackurl ?? string.Empty));
+                            }
+                            __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                "appli",
+                                global::System.Convert.ToString(request.Appli, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty));
+                            if (request.NewAppli != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "new_appli",
+                                    global::System.Convert.ToString(request.NewAppli, global::System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty));
+                            }
+                            if (request.Comment != default)
+                            {
+                                __formValues.Add(new global::System.Collections.Generic.KeyValuePair<string, string>(
+                                    "comment",
+                                    request.Comment ?? string.Empty));
+                            }
+                            var __httpRequestContent = new global::System.Net.Http.FormUrlEncodedContent(__formValues);
                             __httpRequest.Content = __httpRequestContent;
+
                 global::Withings.AutoSDKRequestOptionsSupport.ApplyHeaders(
                     request: __httpRequest,
                     clientHeaders: Options.Headers,
