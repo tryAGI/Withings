@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SleepGetSummaryResponseBodySerieData
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("breathing_disturbances_intensity")]
         public double? BreathingDisturbancesIntensity { get; set; }
@@ -51,19 +51,19 @@ namespace Withings
         public int? Durationtowakeup { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hr_average")]
         public int? HrAverage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hr_max")]
         public int? HrMax { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hr_min")]
         public int? HrMin { get; set; }
@@ -75,13 +75,13 @@ namespace Withings
         public int? RrAverage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rr_max")]
         public int? RrMax { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("rr_min")]
         public int? RrMin { get; set; }
@@ -99,31 +99,31 @@ namespace Withings
         public int? Snoring { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("snoringepisodecount")]
         public int? Snoringepisodecount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wakeupcount")]
         public int? Wakeupcount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("out_of_bed_count")]
         public int? OutOfBedCount { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_sleep_time")]
         public int? TotalSleepTime { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("total_timeinbed")]
         public int? TotalTimeinbed { get; set; }
@@ -135,37 +135,37 @@ namespace Withings
         public double? SleepEfficiency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("sleep_latency")]
         public int? SleepLatency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wakeup_latency")]
         public int? WakeupLatency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("asleepduration")]
         public int? Asleepduration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("night_events")]
         public int? NightEvents { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("nb_rem_episodes")]
         public int? NbRemEpisodes { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("apnea_hypopnea_index")]
         public double? ApneaHypopneaIndex { get; set; }

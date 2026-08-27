@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetWorkoutsResponse
     {
@@ -15,7 +15,7 @@ namespace Withings
         public int? Status { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("body")]
         public global::Withings.GetWorkoutsResponseBody? Body { get; set; }

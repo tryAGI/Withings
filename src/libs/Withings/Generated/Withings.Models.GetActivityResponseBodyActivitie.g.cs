@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetActivityResponseBodyActivitie
     {
@@ -15,37 +15,37 @@ namespace Withings
         public string? Date { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deviceid")]
         public string? Deviceid { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hash_deviceid")]
         public string? HashDeviceid { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("brand")]
         public int? Brand { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("is_tracker")]
         public bool? IsTracker { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("steps")]
         public int? Steps { get; set; }
@@ -105,13 +105,13 @@ namespace Withings
         public int? HrAverage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hr_min")]
         public int? HrMin { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hr_max")]
         public int? HrMax { get; set; }

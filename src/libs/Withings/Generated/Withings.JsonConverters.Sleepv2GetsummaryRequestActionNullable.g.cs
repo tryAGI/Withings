@@ -20,7 +20,7 @@ namespace Withings.JsonConverters
                     {
                         return global::Withings.Sleepv2GetsummaryRequestActionExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

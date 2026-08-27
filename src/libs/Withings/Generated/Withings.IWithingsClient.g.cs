@@ -42,38 +42,38 @@ namespace Withings
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext { get; set; }
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActivityClient Activity { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public HeartClient Heart { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MeasureClient Measure { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NotificationsClient Notifications { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SleepClient Sleep { get; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UserClient User { get; }
 

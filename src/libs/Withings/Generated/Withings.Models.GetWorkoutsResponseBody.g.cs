@@ -4,24 +4,24 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetWorkoutsResponseBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("more")]
         public bool? More { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("offset")]
         public int? Offset { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("series")]
         public global::System.Collections.Generic.IList<global::Withings.GetWorkoutsResponseBodySerie>? Series { get; set; }

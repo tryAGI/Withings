@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class Measurev2GetworkoutsRequest
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("action")]
         [global::System.Text.Json.Serialization.JsonConverter(typeof(global::Withings.JsonConverters.Measurev2GetworkoutsRequestActionJsonConverter))]
@@ -28,13 +28,13 @@ namespace Withings
         public string? Enddateymd { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("lastupdate")]
         public int? Lastupdate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("offset")]
         public int? Offset { get; set; }

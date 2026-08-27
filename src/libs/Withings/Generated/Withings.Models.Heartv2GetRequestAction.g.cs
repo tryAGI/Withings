@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum Heartv2GetRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Get,
     }

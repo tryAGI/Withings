@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum NotifyGetRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Get,
     }

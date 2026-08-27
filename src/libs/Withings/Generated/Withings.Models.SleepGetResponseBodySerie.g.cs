@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SleepGetResponseBodySerie
     {
@@ -16,7 +16,7 @@ namespace Withings
         public global::System.DateTimeOffset? Startdate { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("enddate")]
         public int? Enddate { get; set; }
@@ -28,19 +28,19 @@ namespace Withings
         public int? State { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model")]
         public int? Model { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("model_id")]
         public int? ModelId { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hash_deviceid")]
         public string? HashDeviceid { get; set; }

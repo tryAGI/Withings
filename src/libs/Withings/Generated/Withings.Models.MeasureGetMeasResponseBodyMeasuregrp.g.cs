@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class MeasureGetMeasResponseBodyMeasuregrp
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("grpid")]
         public int? Grpid { get; set; }
@@ -28,13 +28,13 @@ namespace Withings
         public global::System.DateTimeOffset? Date { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("created")]
         public int? Created { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("modified")]
         public int? Modified { get; set; }
@@ -46,19 +46,19 @@ namespace Withings
         public int? Category { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("deviceid")]
         public string? Deviceid { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("hash_deviceid")]
         public string? HashDeviceid { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("measures")]
         public global::System.Collections.Generic.IList<global::Withings.MeasureGetMeasResponseBodyMeasuregrpMeasure>? Measures { get; set; }

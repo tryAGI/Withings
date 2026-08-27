@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum Measurev2GetworkoutsRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Getworkouts,
     }
