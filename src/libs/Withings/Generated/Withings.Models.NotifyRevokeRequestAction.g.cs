@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum NotifyRevokeRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Revoke,
     }

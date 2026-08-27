@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SleepGetResponseBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("series")]
         public global::System.Collections.Generic.IList<global::Withings.SleepGetResponseBodySerie>? Series { get; set; }

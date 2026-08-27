@@ -20,7 +20,7 @@ namespace Withings.JsonConverters
                     {
                         return global::Withings.Heartv2GetRequestActionExtensions.ToEnum(stringValue);
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

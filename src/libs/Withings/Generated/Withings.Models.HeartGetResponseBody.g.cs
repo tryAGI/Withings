@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class HeartGetResponseBody
     {
@@ -21,7 +21,7 @@ namespace Withings
         public int? SamplingFrequency { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("wearposition")]
         public int? Wearposition { get; set; }

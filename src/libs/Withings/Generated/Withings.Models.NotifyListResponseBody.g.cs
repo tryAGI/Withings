@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class NotifyListResponseBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("profiles")]
         public global::System.Collections.Generic.IList<global::Withings.NotifyListResponseBodyProfile>? Profiles { get; set; }

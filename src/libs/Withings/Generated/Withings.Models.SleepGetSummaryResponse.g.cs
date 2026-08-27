@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class SleepGetSummaryResponse
     {
@@ -15,7 +15,7 @@ namespace Withings
         public int? Status { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("body")]
         public global::Withings.SleepGetSummaryResponseBody? Body { get; set; }

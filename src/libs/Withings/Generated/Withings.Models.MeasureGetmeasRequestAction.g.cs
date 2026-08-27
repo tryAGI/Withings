@@ -9,7 +9,7 @@ namespace Withings
     public enum MeasureGetmeasRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Getmeas,
     }

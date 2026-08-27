@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class UserGetDeviceResponseBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("devices")]
         public global::System.Collections.Generic.IList<global::Withings.UserGetDeviceResponseBodyDevice>? Devices { get; set; }

@@ -9,7 +9,7 @@ namespace Withings
     public enum Measurev2GetactivityRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Getactivity,
     }

@@ -20,7 +20,7 @@ namespace Withings.JsonConverters
                     {
                         return global::Withings.MeasureGetmeasRequestActionExtensions.ToEnum(stringValue) ?? default;
                     }
-                    
+
                     break;
                 }
                 case global::System.Text.Json.JsonTokenType.Number:

@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class MeasureGetMeasResponseBody
     {
@@ -16,7 +16,7 @@ namespace Withings
         public global::System.DateTimeOffset? Updatetime { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("timezone")]
         public string? Timezone { get; set; }
@@ -34,7 +34,7 @@ namespace Withings
         public int? Offset { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("measuregrps")]
         public global::System.Collections.Generic.IList<global::Withings.MeasureGetMeasResponseBodyMeasuregrp>? Measuregrps { get; set; }

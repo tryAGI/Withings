@@ -13,7 +13,7 @@ namespace Withings
     public sealed partial class WithingsClient : global::Withings.IWithingsClient, global::System.IDisposable
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const string DefaultBaseUrl = "https://wbsapi.withings.net/";
 
@@ -40,7 +40,7 @@ namespace Withings
         internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Withings.SourceGenerationContext.Default);
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public global::System.Text.Json.Serialization.JsonSerializerContext JsonSerializerContext
         {
@@ -50,7 +50,7 @@ namespace Withings
 
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public ActivityClient Activity => new ActivityClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -59,7 +59,7 @@ namespace Withings
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public HeartClient Heart => new HeartClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -68,7 +68,7 @@ namespace Withings
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public MeasureClient Measure => new MeasureClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -77,7 +77,7 @@ namespace Withings
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public NotificationsClient Notifications => new NotificationsClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -86,7 +86,7 @@ namespace Withings
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public SleepClient Sleep => new SleepClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {
@@ -95,7 +95,7 @@ namespace Withings
         };
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public UserClient User => new UserClient(HttpClient, baseUri: null, authorizations: Authorizations, options: Options)
         {

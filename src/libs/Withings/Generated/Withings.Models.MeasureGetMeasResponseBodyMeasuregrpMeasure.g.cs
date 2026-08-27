@@ -4,7 +4,7 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class MeasureGetMeasResponseBodyMeasuregrpMeasure
     {
@@ -27,13 +27,13 @@ namespace Withings
         public int? Unit { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("algo")]
         public int? Algo { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("fm")]
         public int? Fm { get; set; }

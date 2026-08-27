@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public enum Sleepv2GetsummaryRequestAction
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         Getsummary,
     }

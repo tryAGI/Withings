@@ -4,12 +4,12 @@
 namespace Withings
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public sealed partial class GetIntradayActivityResponseBody
     {
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [global::System.Text.Json.Serialization.JsonPropertyName("series")]
         public global::System.Collections.Generic.Dictionary<string, global::Withings.GetIntradayActivityResponseBodySeries2>? Series { get; set; }
