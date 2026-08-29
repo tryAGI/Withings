@@ -76,6 +76,7 @@ namespace Withings
             typeof(global::Withings.JsonConverters.UnixTimestampJsonConverter),
         })]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.JsonSerializerContextTypes))]
+    [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::System.Collections.Generic.List<object>), TypeInfoPropertyName = "SystemCollectionsGeneric_ObjectList")]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(int))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.MeasureGetMeasResponse))]
     [global::System.Text.Json.Serialization.JsonSerializable(typeof(global::Withings.MeasureGetMeasResponseBody))]
