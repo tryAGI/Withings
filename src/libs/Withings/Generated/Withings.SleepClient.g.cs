@@ -34,7 +34,7 @@ namespace Withings
         /// <inheritdoc/>
         public global::Withings.AutoSDKClientOptions Options { get; }
 
-        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Withings.SourceGenerationContext.Default);
+        internal global::System.Lazy<global::System.Text.Json.Serialization.JsonSerializerContext> JsonSerializerContextProvider { get; set; } = new(() => global::Withings.SleepSourceGenerationContext.Default);
 
         /// <summary>
         ///
